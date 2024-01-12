@@ -8,14 +8,27 @@
 这个项目使用了[python3](https://python.org)和[wget](https://www.gnu.org/software/wget/)。请确保你本地安装了它们。
  
 ```sh
-$ git clone https://github.com/ZhangDongzai/GithubDNSUpdate.git
+git clone https://github.com/ZhangDongzai/GithubDNSUpdate.git
 ```
 
 ## 使用说明
 这是一个python3文件，你应该使用python3去运行它。
 
 ```sh
-$ python3 ./main.py
+python3 main.py
+```
+
+或者你可以使用[pyinstaller](http://www.pyinstaller.org/)来创建二进制文件
+
+```sh
+pyinstaller -F -c -i ./GithubDNSUpdate.ico -n GithubDNSUpdate main.py
+```
+
+然后在./dist下找到二进制可执行文件并执行
+
+```sh
+cd dist
+GithubDNSUpdate
 ```
 
 ## 维护者
