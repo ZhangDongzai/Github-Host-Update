@@ -32,7 +32,7 @@ GithubDNSUpdate
 ```
 
 ## Maintainers
-@ZhangDongzai
+@[ZhangDongzai](https://github.com/ZhangDongzai)
 
 ## License
 [MIT](LICENSE) © Richard Littauer
