@@ -3,15 +3,26 @@
 import os
 
 
-def download() -> str:
-    """download the file and return the name of the file"""
-    
-    # set the url of the hosts file
-    file_url = "https://hosts.gitcdn.top/hosts.txt"
+file_number = 2
 
-    # download file
+file = {1: ["https://hosts.gitcdn.top/hosts.txt",
+            "# fetch-github-hosts begin\n",
+            "# fetch-github-hosts end\n",
+            "hosts.txt"],
+        2: ["https://gitlab.com/ineo6/hosts/-/raw/master/next-hosts",
+            "# 地址可能会变动，请务必关注GitHub、Gitlab获取最新消息",
+            "# GitHub Host End",
+            "next-hosts"]}
+
+file_url = file[file_number][0]
+file_begin = file[file_number][1]
+file_end = file[file_number][2]
+file_name = file[file_number][3]
+
+
+def download() -> None:
+    """download the file"""  
     os.system("wget "+file_url)
-
 
 def writeToHostsFile() -> None:
     # read the file and copy its content
@@ -33,9 +44,9 @@ def writeToHostsFile() -> None:
     begin, end = None, None
 
     for i in range(len(hosts_file_content)):
-        if hosts_file_content[i] == "# fetch-github-hosts begin\n":
+        if hosts_file_content[i] == file_begin:
             begin = i
-        elif hosts_file_content[i] == "# fetch-github-hosts end\n":
+        elif hosts_file_content[i] == file_end:
             end = i
 
     with open(file=file_location, mode="w", encoding="utf-8") as file:
@@ -50,10 +61,10 @@ def deleteFile() -> None:
     """delete the download file"""
     if os.name == "nt":
         # Windows
-        os.system("del hosts.txt")
+        os.system("del "+file_name)
     elif os.name == "posix":
         # Linux or MacOS
-        os.system("rm hosts.txt")
+        os.system("rm "+file_name)
 
 
 if __name__ == "__main__":
