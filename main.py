@@ -26,7 +26,7 @@ def download() -> None:
 
 def writeToHostsFile() -> None:
     # read the file and copy its content
-    with open(file="hosts.txt", mode="r", encoding="utf-8") as file:
+    with open(file=file_name, mode="r", encoding="utf-8") as file:
         download_file_content = file.readlines()
 
     # read hosts file
