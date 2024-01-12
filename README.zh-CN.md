@@ -1,4 +1,5 @@
 # GithubDNSUpdate
+[English](README.md)
 一个可以将Github DNS获取到系统hosts文件的程序。
 
 ## 背景
