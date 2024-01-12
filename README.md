@@ -8,14 +8,27 @@ When I want to change my user avatar on Github, my Github won't open, so look fo
 This project uses [python3](https://python.org) and [wget](https://www.gnu.org/software/wget/). Make sure you have them installed locally.
  
 ```sh
-$ git clone https://github.com/ZhangDongzai/GithubDNSUpdate.git
+git clone https://github.com/ZhangDongzai/GithubDNSUpdate.git
 ```
 
 ## Usage
 This is a python3 file, and you should use [python3](https://python.org) to run it.
 
 ```sh
-$ python3 ./main.py
+python3 main.py
+```
+
+Or you can use [pyinstaller](http://www.pyinstaller.org/) to create a binary executable.
+
+```sh
+pyinstaller -F -c -i ./GithubDNSUpdate.ico -n GithubDNSUpdate main.py
+```
+
+Then find the binary executable under ./dist and execute it.
+
+```sh
+cd dist
+GithubDNSUpdate
 ```
 
 ## Maintainers

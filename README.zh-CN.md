@@ -18,13 +18,13 @@ git clone https://github.com/ZhangDongzai/GithubDNSUpdate.git
 python3 main.py
 ```
 
-或者你可以使用[pyinstaller](http://www.pyinstaller.org/)来创建二进制文件
+或者你可以使用[pyinstaller](http://www.pyinstaller.org/)来创建二进制文件。
 
 ```sh
 pyinstaller -F -c -i ./GithubDNSUpdate.ico -n GithubDNSUpdate main.py
 ```
 
-然后在./dist下找到二进制可执行文件并执行
+然后在./dist下找到二进制可执行文件并执行。
 
 ```sh
 cd dist
