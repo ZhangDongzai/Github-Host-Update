@@ -1,5 +1,5 @@
 # GithubDNSUpdate
-[Chinese](README.zh-CN.md)
+[Chinese](README.zh-CN.md)  
 A program that fetches Github DNS to the system hosts file
 
 ## Background
