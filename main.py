@@ -1,6 +1,5 @@
 # GithubHostsUpdate
 
-import wget
 import os
 
 
