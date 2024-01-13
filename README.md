@@ -22,7 +22,7 @@ python3 main.py
 Or you can use [pyinstaller](http://www.pyinstaller.org/) to create a binary executable.
 
 ```sh
-pyinstaller -F -c -i ./GithubDNSUpdate.ico -n GithubDNSUpdate main.py
+pyinstaller -F -c -i GithubDNSUpdate.ico -n GithubDNSUpdate main.py
 ```
 
 Then find the binary executable under ./dist and execute it.
