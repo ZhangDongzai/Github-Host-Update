@@ -2,7 +2,7 @@
 
 from os import name, system
 
-
+# file 1 is useless
 file_number = 2
 
 file = {1: ["https://hosts.gitcdn.top/hosts.txt",
