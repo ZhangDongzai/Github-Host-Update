@@ -2,8 +2,6 @@
 
 from os import name, system
 
-# file 1 is useless
-file_number = 2
 
 file = {1: ["https://hosts.gitcdn.top/hosts.txt",
             "# fetch-github-hosts begin\n",
@@ -14,17 +12,23 @@ file = {1: ["https://hosts.gitcdn.top/hosts.txt",
             "# GitHub Host End",
             "next-hosts"]}
 
-file_url = file[file_number][0]
-file_begin = file[file_number][1]
-file_end = file[file_number][2]
-file_name = file[file_number][3]
+file_number = 2
 
-if name == "nt":
-    # Windows
-    file_location = "C:\\Windows\\System32\\drivers\\etc\\hosts"
-elif name == "posix":
-    # Linux or MacOS
-    file_location = "/etc/hosts"
+
+def UpdateFile(file_number: int=file_number):
+    global file_url, file_begin, file_end, file_name, file_location
+
+    file_url = file[file_number][0]
+    file_begin = file[file_number][1]
+    file_end = file[file_number][2]
+    file_name = file[file_number][3]
+
+    if name == "nt":
+        # Windows
+        file_location = "C:\\Windows\\System32\\drivers\\etc\\hosts"
+    elif name == "posix":
+        # Linux or MacOS
+        file_location = "/etc/hosts"
 
 
 def download() -> None:
@@ -68,6 +72,7 @@ def deleteFile() -> None:
 
 
 if __name__ == "__main__":
+    UpdateFile()
     download()
     writeToHostsFile()
     deleteFile()
