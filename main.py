@@ -1,6 +1,6 @@
 # GithubHostsUpdate
 
-import os
+from os import name, system
 
 
 file_number = 2
@@ -22,7 +22,7 @@ file_name = file[file_number][3]
 
 def download() -> None:
     """download the file"""  
-    os.system("wget "+file_url)
+    system("wget "+file_url)
 
 def writeToHostsFile() -> None:
     # read the file and copy its content
@@ -30,10 +30,10 @@ def writeToHostsFile() -> None:
         download_file_content = file.readlines()
 
     # read hosts file
-    if os.name == "nt":
+    if name == "nt":
         # Windows
         file_location = "C:\\Windows\\System32\\drivers\\etc\\hosts"
-    elif os.name == "posix":
+    elif name == "posix":
         # Linux or MacOS
         file_location = "/etc/hosts"
 
@@ -59,12 +59,12 @@ def writeToHostsFile() -> None:
 
 def deleteFile() -> None:
     """delete the download file"""
-    if os.name == "nt":
+    if name == "nt":
         # Windows
-        os.system("del "+file_name)
-    elif os.name == "posix":
+        system("del "+file_name)
+    elif name == "posix":
         # Linux or MacOS
-        os.system("rm "+file_name)
+        system("rm "+file_name)
 
 
 if __name__ == "__main__":
