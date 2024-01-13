@@ -3,7 +3,7 @@
 一个可以将Github DNS获取到系统hosts文件的程序。
 
 ## 背景
-当我想在Github上更改用户头像时，我的Github打不开，所以在网上寻找教程。我找到了[host.txt](https://hosts.gitcdn.top/hosts.txt)，可每次需要自己更改，于是我便萌生了写一个自动将文件添加到系统hosts文件的程序。
+当我想在Github上更改用户头像时，我的Github打不开，所以在网上寻找教程。我找到了更新Github DNS的网站，可每次需要自己更改，于是我便萌生了写一个自动将文件添加到系统hosts文件的程序。
 
 ## 安装
 这个项目使用了[python3](https://python.org)和[wget](https://www.gnu.org/software/wget/)。请确保你本地安装了它们。

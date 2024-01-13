@@ -3,7 +3,7 @@
 A program that fetches Github DNS to the system hosts file
 
 ## Background
-When I want to change my user avatar on Github, my Github won't open, so look for tutorials online. I found [host.txt](https://hosts.gitcdn.top/hosts.txt), but every time I needed to change it myself, I came up with the idea of writing a program that automatically added files to the system hosts file.
+When I want to change my user avatar on Github, my Github won't open, so look for tutorials online. I found the site to update the Github DNS, but every time I needed to change it myself, I came up with the idea of writing a program that automatically added files to the system hosts file.
 
 ## Install
 This project uses [python3](https://python.org) and [wget](https://www.gnu.org/software/wget/). Make sure you have them installed locally.
