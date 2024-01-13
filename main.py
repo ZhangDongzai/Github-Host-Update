@@ -19,6 +19,13 @@ file_begin = file[file_number][1]
 file_end = file[file_number][2]
 file_name = file[file_number][3]
 
+if name == "nt":
+    # Windows
+    file_location = "C:\\Windows\\System32\\drivers\\etc\\hosts"
+elif name == "posix":
+    # Linux or MacOS
+    file_location = "/etc/hosts"
+
 
 def download() -> None:
     """download the file"""  
@@ -30,13 +37,6 @@ def writeToHostsFile() -> None:
         download_file_content = file.readlines()
 
     # read hosts file
-    if name == "nt":
-        # Windows
-        file_location = "C:\\Windows\\System32\\drivers\\etc\\hosts"
-    elif name == "posix":
-        # Linux or MacOS
-        file_location = "/etc/hosts"
-
     with open(file=file_location, mode="r", encoding="utf-8") as file:
         hosts_file_content = file.readlines()
 
