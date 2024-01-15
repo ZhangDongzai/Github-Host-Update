@@ -1,6 +1,7 @@
 # GithubHostsUpdate
 
 from os import name, system
+from requests import get, Response
 
 
 file = {1: ["https://hosts.gitcdn.top/hosts.txt",
@@ -14,7 +15,6 @@ file = {1: ["https://hosts.gitcdn.top/hosts.txt",
 
 file_number = 2
 file_encoding = "utf-8"
-
 
 def UpdateFile(file_number: int=file_number):
     global file_url, file_begin, file_end, file_name, file_location
@@ -32,15 +32,19 @@ def UpdateFile(file_number: int=file_number):
         file_location = "/etc/hosts"
 
 
-def download() -> None:
-    """download the file"""  
-    system("wget "+file_url)
+def download() -> Response:
+    """download the file"""
+    global download_file_content
+
+    # 下载数据
+    # 代码解析:
+    # requests.get(file_url) -> requests.Response
+    # requests.Response.content -> bytes
+    # str(bytes, encoding="utf-8") -> str
+    # str.split('\n') -> list
+    download_file_content = str(get(file_url).content, encoding="utf-8").split('\n')
 
 def writeToHostsFile() -> None:
-    # read the file and copy its content
-    with open(file=file_name, mode="r", encoding=file_encoding) as file:
-        download_file_content = file.readlines()
-
     # read hosts file
     with open(file=file_location, mode="r", encoding=file_encoding) as file:
         hosts_file_content = file.readlines()
@@ -62,19 +66,9 @@ def writeToHostsFile() -> None:
             # the file wrote hosts before
             file.writelines(hosts_file_content[0: begin-1] + download_file_content + hosts_file_content[end+1: -1])
 
-def deleteFile() -> None:
-    """delete the download file"""
-    if name == "nt":
-        # Windows
-        system("del "+file_name)
-    elif name == "posix":
-        # Linux or MacOS
-        system("rm "+file_name)
-
 
 if __name__ == "__main__":
     UpdateFile()
     download()
     writeToHostsFile()
-    deleteFile()
     
