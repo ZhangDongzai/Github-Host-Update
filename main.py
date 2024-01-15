@@ -13,6 +13,7 @@ file = {1: ["https://hosts.gitcdn.top/hosts.txt",
             "next-hosts"]}
 
 file_number = 2
+file_encoding = "utf-8"
 
 
 def UpdateFile(file_number: int=file_number):
@@ -37,11 +38,11 @@ def download() -> None:
 
 def writeToHostsFile() -> None:
     # read the file and copy its content
-    with open(file=file_name, mode="r", encoding="utf-8") as file:
+    with open(file=file_name, mode="r", encoding=file_encoding) as file:
         download_file_content = file.readlines()
 
     # read hosts file
-    with open(file=file_location, mode="r", encoding="utf-8") as file:
+    with open(file=file_location, mode="r", encoding=file_encoding) as file:
         hosts_file_content = file.readlines()
 
     # find hosts begin and end
@@ -53,7 +54,7 @@ def writeToHostsFile() -> None:
         elif hosts_file_content[i] == file_end:
             end = i
 
-    with open(file=file_location, mode="w", encoding="utf-8") as file:
+    with open(file=file_location, mode="w", encoding=file_encoding) as file:
         if (begin == None) and (end == None):
             # the file didn't write hosts before
             file.writelines(hosts_file_content + download_file_content)

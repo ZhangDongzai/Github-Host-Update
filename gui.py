@@ -8,8 +8,9 @@ import main
 
 class GUI:
     # init
-    NAME = "GithubDNSUpdate"
+    NAME = "GithubHostUpdate"
     WINDOW_SIZE = WINDOW_WIDTH, WINDOW_HEIGHT = 300, 100
+    ICO_PATH = "./GithubHostUpdate.ico"
 
     def __init__(self) -> None:
         self.build()
@@ -24,7 +25,7 @@ class GUI:
         # set window
         self.root.title(GUI.NAME)
         self.root.geometry(str(GUI.WINDOW_WIDTH)+'x'+str(GUI.WINDOW_HEIGHT))
-        self.root.iconbitmap("GithubDNSUpdate.ico")
+        self.root.iconbitmap(GUI.ICO_PATH)
 
     def frame(self) -> None:
         """build frame"""
