@@ -9,7 +9,7 @@ When I want to change my Hostuser avatar on Github, my Github won't open, so loo
 
 ## Install
 
-This project uses [python3](https://python.org) and [wget](https://www.gnu.org/software/wget/). Make sure you have them installed locally.
+This project uses [python3](https://python.org), [python3](https://python.org) using modules are [os](https://docs.python.org/3/library/os.html) and [requests](https://requests.readthedocs.io/). Make sure you have them installed locally.
  
 ```sh
 git clone https://github.com/ZhangDongzai/GithubHostUpdate.git

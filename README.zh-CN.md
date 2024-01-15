@@ -9,7 +9,7 @@
 
 ## 安装
 
-这个项目使用了[python3](https://python.org)和[wget](https://www.gnu.org/software/wget/)。请确保你本地安装了它们。
+这个项目使用了[python3](https://python.org), [python3](https://python.org)使用的模块有[os](https://docs.python.org/3/library/os.html)和[requests](https://requests.readthedocs.io/)。请确保你本地安装了它们。
  
 ```sh
 git clone https://github.com/ZhangDongzai/GithubHostUpdate.git
