@@ -44,7 +44,7 @@ python3 gui.py
 Or you can use [pyinstaller](http://www.pyinstaller.org/) to create a binary executable.
 
 ```sh
-pyinstaller -F -c -i GithubHostUpdate.ico -n GithubHostUpdate_GUI gui.py
+pyinstaller -F -w -i GithubHostUpdate.ico -n GithubHostUpdate_GUI gui.py
 ```
 
 Then find the binary executable under ./dist and execute it.

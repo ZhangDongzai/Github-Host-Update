@@ -44,7 +44,7 @@ python3 gui.py
 或者你可以使用[pyinstaller](http://www.pyinstaller.org/)来创建二进制文件。
 
 ```sh
-pyinstaller -F -i GithubHostUpdate.ico -n GithubHostUpdate_GUI gui.py
+pyinstaller -F -w -i GithubHostUpdate.ico -n GithubHostUpdate_GUI gui.py
 ```
 
 然后在./dist下找到二进制可执行文件并执行。
