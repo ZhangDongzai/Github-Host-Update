@@ -55,7 +55,6 @@ class GUI:
         main.UpdateFile(int(self.choose_file_combobox.get()))
         main.download()
         main.writeToHostsFile()
-        main.deleteFile()
 
 
 if __name__ == "__main__":
