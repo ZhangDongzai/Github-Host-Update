@@ -33,6 +33,33 @@ pyinstaller -F -c -i GithubHostUpdate.ico -n GithubHostUpdate_command main.py
 
 然后在./dist下找到二进制可执行文件并执行。
 
+#### 参数
+
+使用[python3](https://python.org)运行。
+
+```sh
+python3 main.py [file_number]
+```
+
+或者
+
+```sh
+python3 main.py [file_url]
+```
+
+运行二进制文件。
+
+
+```sh
+GithubHostUpdate_command [file_number]
+```
+
+或者
+
+```sh
+GithubHostUpdate_command [file_url]
+```
+
 ### 图形界面版本
 
 这是一个[python3](https://python.org)文件，你应该使用[python3](https://python.org)去运行它。

@@ -33,6 +33,32 @@ pyinstaller -F -c -i GithubHostUpdate.ico -n GithubHostUpdate_command main.py
 
 Then find the binary executable under ./dist and execute it.
 
+#### Argument
+
+Use [python3](https://python.org) to run.
+
+```sh
+python3 main.py [file_number]
+```
+
+or
+
+```sh
+python3 main.py [file_url]
+```
+
+Run the binary executable.
+
+```sh
+GithubHostUpdate_command [file_number]
+```
+
+or
+
+```sh
+GithubHostUpdate_command [file_url]
+```
+
 ### GUI Version
 
 This is a [python3](https://python.org) file, and you should use [python3](https://python.org) to run it.
