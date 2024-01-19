@@ -1,74 +1,81 @@
 # GithubHostsUpdate
 
-from os import name, system
+from os import name
+from sys import argv
 from requests import get, Response
 
 
-file = {1: ["https://hosts.gitcdn.top/hosts.txt",
-            "# fetch-github-hosts begin\n",
-            "# fetch-github-hosts end\n",
-            "hosts.txt"],
-        2: ["https://gitlab.com/ineo6/hosts/-/raw/master/next-hosts",
-            "# 地址可能会变动，请务必关注GitHub、Gitlab获取最新消息",
-            "# GitHub Host End",
-            "next-hosts"]}
+file = {1: "https://hosts.gitcdn.top/hosts.txt",
+        2: "https://gitlab.com/ineo6/hosts/-/raw/master/next-hosts"}
 
 file_number = 2
 file_encoding = "utf-8"
 
+if name == "nt":
+    # Windows
+    file_location = "C:\\Windows\\System32\\drivers\\etc\\hosts"
+elif name == "posix":
+    # Linux or MacOS
+    file_location = "/etc/hosts"
+
 def UpdateFile(file_number: int=file_number):
-    global file_url, file_begin, file_end, file_name, file_location
+    global file_url, file_location
 
-    file_url = file[file_number][0]
-    file_begin = file[file_number][1]
-    file_end = file[file_number][2]
-    file_name = file[file_number][3]
+    if len(argv) == 0:
+        # No entrys
+        file_url = file[file_number][0]
+    elif len(argv) == 1:
+        # 1 entry
+        try:
+            # Is file_number
+            file_url = file[int(argv[0])][0]
+        except ValueError:
+            # Is url
+            file_url = argv[0]
+    else:
+        # More then 1 entry
+        raise ValueError("Too much entrys")
 
-    if name == "nt":
-        # Windows
-        file_location = "C:\\Windows\\System32\\drivers\\etc\\hosts"
-    elif name == "posix":
-        # Linux or MacOS
-        file_location = "/etc/hosts"
+def download(file_url: str) -> Response:
+    """Download the file"""
+    global download_content, download_begin, download_end
 
-
-def download() -> Response:
-    """download the file"""
-    global download_file_content
-
-    # 下载数据
-    # 代码解析:
+    # Download file
+    
     # requests.get(file_url) -> requests.Response
     # requests.Response.content -> bytes
     # str(bytes, encoding="utf-8") -> str
     # str.split('\n') -> list
-    download_file_content = str(get(file_url).content, encoding="utf-8").split('\n')
+    download_content = str(get(file_url).content, encoding="utf-8").split('\n')
+
+    download_begin = download_content[0]
+    download_end = download_content[-1]
 
 def writeToHostsFile() -> None:
-    # read hosts file
+    # Read hosts file
     with open(file=file_location, mode="r", encoding=file_encoding) as file:
-        hosts_file_content = file.readlines()
+        hosts_content = file.readlines()
 
-    # find hosts begin and end
+    # Find hosts begin and end
     begin, end = None, None
 
-    for i in range(len(hosts_file_content)):
-        if hosts_file_content[i] == file_begin:
+    for i in range(len(hosts_content)):
+        if hosts_content[i] == download_begin:
             begin = i
-        elif hosts_file_content[i] == file_end:
+        elif hosts_content[i] == download_end:
             end = i
 
     with open(file=file_location, mode="w", encoding=file_encoding) as file:
         if (begin == None) and (end == None):
-            # the file didn't write hosts before
-            file.writelines(hosts_file_content + download_file_content)
+            # The file didn't write hosts before
+            file.writelines(hosts_content + download_content)
         elif (type(begin) == int) and (type(end) == int):
-            # the file wrote hosts before
-            file.writelines(hosts_file_content[0: begin-1] + download_file_content + hosts_file_content[end+1: -1])
+            # The file wrote hosts before
+            file.writelines(hosts_content[0: begin-1] + download_content + hosts_content[end+1: -1])
 
 
 if __name__ == "__main__":
-    UpdateFile()
-    download()
+    UpdateFile(file_number)
+    download(file_url)
     writeToHostsFile()
     
