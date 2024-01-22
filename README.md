@@ -1,4 +1,4 @@
-# GithubHostUpdate
+# Github-Host-Update
 
 [Chinese](README.zh-CN.md)  
 A program that fetches Github host to the system hosts file
